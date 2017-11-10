@@ -27,6 +27,11 @@ public class BinaryTreeTest {
         assertEquals(true, tree.remove(25));
         assertEquals(false, tree.contains(25));
         assertEquals(false, tree.contains(100));
+        assertEquals(false, tree.remove(100));
+        assertEquals(true, tree.remove(20));
+        assertEquals(false, tree.remove(20));
+        assertEquals(false, tree.contains(20));
+
 
     }
 

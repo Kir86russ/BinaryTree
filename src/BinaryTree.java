@@ -85,6 +85,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         Node<T> parent = findParent(node.value);
 
         if (parent == null) {
+            if (newNode == null) {
+                root = null;
+                return;
+            }
             root.value = newNode.value;
             root.right = newNode.right;
             root.left = newNode.left;
@@ -103,11 +107,10 @@ public class BinaryTree<T extends Comparable<T>> extends AbstractSet<T> implemen
         return minRoot;
     }
 
-    @Override
-    public boolean remove(Object o) {
+    public boolean remove(T o) {
         Node<T> node = find((T) o);
 
-        if (node == null) return false;
+        if (node == null || node.value != o) return false;
 
         if (node.left == null && node.right == null) {
             delete(node);
